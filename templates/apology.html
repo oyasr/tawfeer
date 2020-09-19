@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+<!-- Title -->
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <div id="apology">
+        <div class="container">
+            <div class="apology-message">
+                <h1 id="code">{{ code }}</h1>
+                <p id="message">{{ message }}</p>
+            </div>
+            <div class="apology-img">
+                <img src={{ url_for('static', filename='apology.png') }} alt="Two people searching a map illustration">
+            </div>
+        </div>
+    </div>
+{% endblock %}

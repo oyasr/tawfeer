@@ -7,7 +7,7 @@
 
 <!-- Login Form -->
 {% block main %}
-    <div id="login-form">
+    <div id="primary-form">
         <div class="container">
             <h1>Log In</h1>
             <p>Track expenses in minutes.</p>
@@ -23,7 +23,7 @@
                 <button class="btn btn-primary" type="submit">Login</button>
                 <p>Don't have an account yet? <a class="text-primary" href="/register">Register.</a></p>
             </form>
-            <div class="login-img"><img src={{ url_for('static', filename = 'login.png') }} alt="Yoga girl illustration"></div>
+            <div class="form-img"><img src={{ url_for('static', filename='login.png') }} alt="Yoga girl illustration"></div>
         </div>
     </div>
 {% endblock %}

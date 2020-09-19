@@ -74,6 +74,11 @@ a {
     margin-top: 40px;
 }
 
+#navbar #logout {
+    margin-top: 30px;
+    float: right;
+}
+
 #navbar ul {
     list-style: none;
     float: right;
@@ -93,24 +98,24 @@ a {
     color:  #335eea;
 }
 
-/* Login */
-#login-form {
+/* Form */
+#primary-form {
     padding-top: 100px;
     font-size: 18px;
 }
 
-#login-form h1 {
+#primary-form h1 {
     font-weight: lighter;
     line-height: 1.5em;
     margin: 0;
 }
 
-#login-form p {
+#primary-form p {
     color: #506690;
     margin: 0;
 }
 
-#login-form form {
+#primary-form form {
     width: 50%;
     float: left;
     min-height: 100%;
@@ -118,25 +123,25 @@ a {
     overflow: hidden;
 }
 
-#login-form .login-img {
+#primary-form .form-img {
     width: 50%;
     float: right;
     min-height: 100%;
 }
 
-#login-form .login-img img {
+#primary-form .form-img img {
     display: block;
     margin: auto;
     width: 100%;
 }
 
-#login-form label {
+#primary-form label {
     display: block;
     margin-top: 20px;
     margin-bottom: 10px;
 }
 
-#login-form input {
+#primary-form input {
     width: 50%;
     padding: 10px;
     border: 1px solid #b6cbe6;
@@ -144,20 +149,55 @@ a {
     border-radius: 5%;
 }
 
-#login-form button {
+#primary-form button {
     margin: 20px 0px;
     width: 50%;
     font-family: 'Noto Sans HK', sans-serif;
 }
 
-#login-form form p {
+#primary-form form p {
     font-size: 14px;
 }
 
-#login-form input:focus {
+#primary-form input:focus {
     outline: none;
     border-color: #335eea;
 }
 
+/* Apology */
+#apology {
+    padding-top: 100px;
+    font-size: 18px;
+}
 
+#apology .apology-message {
+    width: 50%;
+    float: left;
+    text-align: center;
+    min-height: 100%;
+    padding: 20px 0px;
+    overflow: hidden;
+    padding-top: 150px;
+}
 
+#apology .apology-message h1 {
+    font-size: 70px;
+    font-weight: lighter;
+}
+
+#apology .apology-message p {
+    font-size: 20px;
+    color: #506690;
+}
+
+#apology .apology-img {
+    width: 50%;
+    float: right;
+    min-height: 100%;
+}
+
+#apology .apology-img img {
+    display: block;
+    margin: auto;
+    width: 100%;
+}

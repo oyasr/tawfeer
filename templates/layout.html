@@ -18,12 +18,12 @@
             <div class="navbar">
                 <h2 class="logo"><a class="text-primary" href="/">Tawfeer.</a></h2>
                 {% if session.user_id %}
+                    <div id="logout"><a href="/logout" class="btn btn-primary">Log out</a></div>
                     <ul>
                         <li><a href="">Transactions</a></li>
                         <li><a href="">Insights</a></li>
                         <li><a href="">Budgets</a></li>
                     </ul>
-                    <div><a href="logout" class="btn">Logout</a></div>
                 {% else %}
                     <ul>
                         <li><a href="/register">Register</a></li>
