@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to favicon, google fonts & styles -->
+    <link href="/static/favicon.ico" rel="icon">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK&family=Roboto:ital,wght@1,100&display=swap" rel="stylesheet">
+    <link href="/static/styles.css" rel="stylesheet">
+
+    <!-- Title -->
+    <title>Tawfeer | {% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header id="navbar">
+        <div class="container">
+            <div class="navbar">
+                <h2 class="logo"><a class="text-primary" href="/">Tawfeer.</a></h2>
+                {% if session.user_id %}
+                    <ul>
+                        <li><a href="">Transactions</a></li>
+                        <li><a href="">Insights</a></li>
+                        <li><a href="">Budgets</a></li>
+                    </ul>
+                    <div><a href="logout" class="btn">Logout</a></div>
+                {% else %}
+                    <ul>
+                        <li><a href="/register">Register</a></li>
+                        <li><a href="/login">Login</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    {% if get_flashed_messages() %}
+        <header>
+            <div class="alert alert-primary border text-center" role="alert">
+                {{ get_flashed_messages() | join(" ") }}
+            </div>
+        </header>
+    {% endif %}
+
+    {% block main %}{% endblock %}
+    
+    <footer>
+        
+    </footer>
+</body>
+</html>
