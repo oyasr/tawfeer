@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+<!-- Title -->
+{% block title %}
+    Home
+{% endblock %}
+
+
+<!-- Main -->
+{% block main %}
+    <div id="home">
+        <div class="container">
+            <div class="month-div">
+                <h1>Listings of current month</h1>
+                <form id="ajaxt" action="/" method="POST">
+                    <div class="form-group">
+                        <input placeholder="List by month [1 - 12]" autocomplete="off" min="1" max="12" name="month" id="month" type="number">
+                        <button type="submit" class="btn btn-primary">Select</button>
+                    </div>
+                </form>
+            </div>
+            <div class="clr"></div>
+            <div class="numbers">
+                <div class="spent">
+                    <h1>{{ spent }}</h1>
+                    <p>Spent</p>
+                </div>
+                <div class="remaining">
+                    <h1>{{ remain }}</h1>
+                    <p>Remainig</p>
+                </div>
+                <a href="/add" class="btn btn-primary">Add transaction</a>
+            </div>
+            <div class="table">
+                <table id='table' class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        {% for row in rows %}
+                        <tr>
+                            <td>{{ row["category"] }}</td>
+                            <td>{{ row["description"] }}</td>
+                            <td>{{ row["price"] }}</td>
+                            <td>{{ row["date"] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

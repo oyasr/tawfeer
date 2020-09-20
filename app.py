@@ -32,10 +32,109 @@ Session(app)
 db = SQL('sqlite:///tawfeer.db')
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
-    return apology('TODO', 400)
+    """User's home page"""
+
+    # Get user id & cash
+    user_id = session['user_id']
+    cash = db.execute("""
+        SELECT cash FROM users
+        WHERE id = :id;
+    """, id=user_id)[0]['cash']
+
+    # Method is POST
+    if request.method == 'POST':
+        
+        # Get month
+        month = request.form.get('month')
+        
+        # Ensure a month was submitted
+        if not month:
+            return apology('Missing a month?', 400)
+
+        # Fromat month
+        if month not in ('10', '11', '12'):
+            month = '0' + month
+
+        # Get month total
+        spent = db.execute("""
+            SELECT SUM(t.price) AS sum
+            FROM transactions t
+            JOIN bridge b
+            ON b.id = t.bridge_id
+            AND b.user_id = :id 
+            AND strftime('%m', t.occurred_at) = :month
+            """, id=user_id, month=month)[0]['sum']
+        
+        # Get remaining cash
+        if not spent:
+            remain, spent = cash, 0
+        else:
+            remain = cash - spent
+
+        # Get listings by month
+        rows = db.execute("""
+            SELECT c.name category, 
+            t.description description,
+            t.price price, 
+            strftime('%d/%m/%Y' ,t.occurred_at) date
+            FROM categories c
+            JOIN bridge b
+            ON c.id = b.category_id 
+            AND user_id = :id
+            JOIN transactions t
+            ON b.id = t.bridge_id
+            AND strftime('%m', t.occurred_at) = :month
+            ORDER BY t.occurred_at DESC, c.name DESC;
+        """, id=user_id, month=month)
+
+        return render_template('index.html', 
+            spent=spent, remain=remain, rows=rows)
+
+    # Method is GET
+    else:
+
+        # Get current month total
+        spent = db.execute("""
+            SELECT SUM(t.price) AS sum
+            FROM transactions t
+            JOIN bridge b
+            ON b.id = t.bridge_id
+            AND b.user_id = :id 
+            AND strftime('%m', t.occurred_at) 
+            = strftime('%m', date('now'));
+            """, id=user_id)[0]['sum']
+        
+        # Get remaining cash
+        if not spent:
+            remain, spent = cash, 0
+        else:
+            remain = cash - spent
+
+        # Get current month transactions
+        rows = db.execute("""
+            SELECT c.name category, 
+            t.description description,
+            t.price price, 
+            strftime('%d/%m/%Y' ,t.occurred_at) date
+            FROM categories c
+            JOIN bridge b
+            ON c.id = b.category_id 
+            AND user_id = :id
+            JOIN transactions t
+            ON b.id = t.bridge_id
+            AND strftime('%m', t.occurred_at) 
+            = strftime('%m', date('now'))
+            ORDER BY t.occurred_at DESC, c.name DESC;
+        """, id=user_id)
+
+        return render_template('index.html',
+            spent=spent, remain=remain, rows=rows)
+        
+
+    
 
 @app.route('/logout')
 @login_required
@@ -157,3 +256,143 @@ def register():
     # Method is GET
     else:
         return render_template("register.html")
+
+@app.route('/add', methods=['GET', 'POST'])
+@login_required
+def add():
+    """Add a transaction"""
+
+    # Get user id 
+    user_id = session['user_id']
+
+    # Method is POST
+    if request.method == 'POST':
+
+        # Get form input
+        category = request.form.get('category')
+        new_category = request.form.get('new-category').lower().strip()
+        description = request.form.get('description')
+        price = request.form.get('price')
+        
+        # Ensure a category is chosen
+        if not category and not new_category:
+            return apology('Missing category?', 400)
+        
+        # Ensure only one category is choosen
+        if category and new_category:
+            return apology('Multiple categories choosen?', 400)
+
+        # Ensure description is submitted
+        if not description:
+            return apology('Missing description?', 400)
+
+        # Ensure price is submitted
+        if not price:
+            return apology('Missing price?', 400)
+
+        # Existing category is choosen
+        if category:
+
+            # Get bridge id
+            bridge_id = db.execute("""
+                SELECT b.id id
+                FROM categories c
+                JOIN bridge b
+                ON c.id = b.category_id
+                AND c.name = :category
+                AND user_id = :id;
+            """, id=user_id, category=category)[0]['id']
+
+            # Insert into transactions
+            db.execute("""
+                INSERT INTO transactions
+                (bridge_id, description, price, occurred_at)
+                VALUES (:id, :des, :price, date('now'));
+            """, id=bridge_id, des=description, price=price)
+        
+        # New category is added
+        else:
+            
+            # Check if new category exists
+            rows = db.execute("""
+                SELECT id FROM categories
+                WHERE name = :name;
+            """, name=new_category)
+
+            # Category exists
+            if len(rows) == 1:
+
+                # Get category id
+                category_id = rows[0]['id']
+
+                # Insert into bridge
+                db.execute("""
+                    INSERT INTO bridge (user_id, category_id)
+                    VALUES (:user_id, :category_id)
+                """, user_id=user_id, category_id=category_id)
+
+                # Get bridge id
+                bridge_id = db.execute("""
+                    SELECT id FROM bridge
+                    WHERE user_id = :user_id
+                    AND category_id = :category_id;
+                """, user_id=user_id, category_id=category_id)[0]['id']
+
+                # Insert into transactions
+                db.execute("""
+                    INSERT INTO transactions
+                    (bridge_id, description, price, occurred_at)
+                    VALUES (:id, :des, :price, date('now'));
+                """, id=bridge_id ,des=description, price=price)
+            
+            # Category doesn't exist
+            else:
+
+                # Insert into category
+                db.execute("""
+                    INSERT INTO categories (name)
+                    VALUES (:name)
+                """, name=new_category)
+
+                # Get category id
+                category_id = db.execute("""
+                    SELECT id FROM categories
+                    WHERE name = :name
+                """, name=new_category)[0]['id']
+
+                # Insert into bridge
+                db.execute("""
+                    INSERT INTO bridge (user_id, category_id)
+                    VALUES (:user_id, :category_id)
+                """, user_id=user_id, category_id=category_id)
+
+                # Get bridge id
+                bridge_id = db.execute("""
+                    SELECT id FROM bridge
+                    WHERE user_id = :user_id
+                    AND category_id = :category_id;
+                """, user_id=user_id, category_id=category_id)[0]['id']
+
+                # Insert into transactions
+                db.execute("""
+                    INSERT INTO transactions
+                    (bridge_id, description, price, occurred_at)
+                    VALUES (:id, :des, :price, date('now'));
+                """, id=bridge_id ,des=description, price=price)
+
+        # Redirect user to homepage
+            return redirect(url_for('index'))
+    
+    # Method is GET
+    else:
+
+        # Get user's categories
+        rows = db.execute("""
+            SELECT c.name category
+            FROM categories c
+            JOIN bridge b
+            ON c.id = b.category_id
+            AND b.user_id = :id;
+        """, id=user_id)
+
+        return render_template('add.html', rows=rows)
