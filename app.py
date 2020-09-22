@@ -1,4 +1,5 @@
 from cs50 import SQL
+import json
 from datetime import datetime
 from flask import Flask, request, render_template, redirect, url_for, session, flash
 from flask_session import Session
@@ -54,6 +55,10 @@ def index():
         if not month:
             return apology('Missing a month?', 400)
 
+        # Get month name
+        month_name = datetime(2020, int(month), 1).strftime('%B')
+        month_name.capitalize()
+
         # Fromat month
         if month not in ('10', '11', '12'):
             month = '0' + month
@@ -91,7 +96,7 @@ def index():
         """, id=user_id, month=month)
 
         return render_template('index.html', 
-            spent=spent, remain=remain, rows=rows)
+            spent=spent, remain=remain, rows=rows, month=month_name)
 
     # Method is GET
     else:
@@ -396,3 +401,34 @@ def add():
         """, id=user_id)
 
         return render_template('add.html', rows=rows)
+
+
+@app.route('/insights')
+@login_required
+def insights():
+
+    # Get user id
+    user_id = session['user_id']
+
+    # Create data list
+    data = []
+
+    # Get spendings by category
+    rows = db.execute("""
+        SELECT c.name category, SUM(t.price) sum
+        FROM categories c
+        JOIN bridge b
+        ON c.id = b.category_id
+        AND b.user_id = :id
+        JOIN transactions t
+        ON b.id = t.bridge_id
+        GROUP BY 1
+        ORDER BY 2 DESC;
+    """, id=user_id)
+
+    # Add to data list
+    data.append([i for i in rows[0]])
+    for i in range(len(rows)):
+        data.append([j for j in rows[i].values()])
+
+    return render_template('insights.html', donut_data=json.dumps(data))

@@ -39,7 +39,7 @@ a {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
-    border-radius: 5%;
+    border-radius: 5px;
     font-family: 'Noto Sans HK', sans-serif;
 }
 
@@ -147,7 +147,7 @@ a {
     padding: 10px;
     border: 1px solid #b6cbe6;
     font-size: 16px;
-    border-radius: 5%;
+    border-radius: 5px;
 }
 
 #primary-form button {
@@ -292,6 +292,11 @@ a {
     float: right;
 }
 
+#home .month-div form .form-group {
+    width: 100%;
+    margin: auto;
+}
+
 #home .month-div h1 {
     width: 50%;
     float: left;
@@ -300,15 +305,23 @@ a {
 }
 
 #home .month-div form input {
-    width: 50%;
-    padding: 10px;
+    width: 70%;
+    padding: 10px 20px;
+    font-size: 16px;
     border: 1px solid #b6cbe6;
-    font-size: 20px;
+    border-radius: 5px;
     margin-top: 10px;
+    font-family: 'Noto Sans HK', sans-serif;
 
 }
 
 #home .month-div form input:focus {
     outline: none;
     border-color: #335eea;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 100px;
 }

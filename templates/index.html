@@ -11,22 +11,26 @@
     <div id="home">
         <div class="container">
             <div class="month-div">
-                <h1>Listings of current month</h1>
-                <form id="ajaxt" action="/" method="POST">
+                {% if not month %}
+                    <h1>Listings of the <span class="text-primary">Month</span></h1>
+                {% else %}
+                    <h1>Listings of <span class="text-primary">{{ month }}</span></h1>
+                {% endif %}
+                <form action="/" method="POST">
                     <div class="form-group">
                         <input placeholder="List by month [1 - 12]" autocomplete="off" min="1" max="12" name="month" id="month" type="number">
-                        <button type="submit" class="btn btn-primary">Select</button>
+                        <button style="width: 20%;" type="submit" class="btn btn-primary">Select</button>
                     </div>
                 </form>
             </div>
             <div class="clr"></div>
             <div class="numbers">
                 <div class="spent">
-                    <h1>{{ spent }}</h1>
+                    <h1>${{ spent }}</h1>
                     <p>Spent</p>
                 </div>
                 <div class="remaining">
-                    <h1>{{ remain }}</h1>
+                    <h1>${{ remain }}</h1>
                     <p>Remainig</p>
                 </div>
                 <a href="/add" class="btn btn-primary">Add transaction</a>
@@ -46,7 +50,7 @@
                         <tr>
                             <td>{{ row["category"] }}</td>
                             <td>{{ row["description"] }}</td>
-                            <td>{{ row["price"] }}</td>
+                            <td>${{ row["price"] }}</td>
                             <td>{{ row["date"] }}</td>
                         </tr>
                         {% endfor %}

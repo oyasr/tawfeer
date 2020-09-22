@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK&family=Roboto:ital,wght@1,100&display=swap" rel="stylesheet">
     <link href="/static/styles.css" rel="stylesheet">
 
+    <!-- Custom head block -->
+    {% block head %}{% endblock %}
+
     <!-- Title -->
     <title>Tawfeer | {% block title %}{% endblock %}</title>
 </head>
@@ -20,9 +23,9 @@
                 {% if session.user_id %}
                     <div id="logout"><a href="/logout" class="btn btn-primary">Log out</a></div>
                     <ul>
+                        <li><a href="/">Home</a></li>
                         <li><a href="/add">Add</a></li>
-                        <li><a href="">Insights</a></li>
-                        <li><a href="">Budgets</a></li>
+                        <li><a href="/insights">Visuals</a></li>
                     </ul>
                 {% else %}
                     <ul>
@@ -45,7 +48,7 @@
     {% block main %}{% endblock %}
     
     <footer>
-        
+        Designed and developed by <a href="https://www.linkedin.com/in/osamayasserr/" class="text-primary" target="_blank">Osama Yasser</a>. All rights reserved.
     </footer>
 </body>
 </html>

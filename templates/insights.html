@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+<!-- Graphs scripts -->
+{% block head %}
+  <style>
+    h {
+      color: #c5d3ff;
+    }
+  </style>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+
+    // Donut chart
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable({{ donut_data|safe }});
+
+      var options = {
+        title: 'Categories Spendings',
+        pieHole: 0.4,
+        colors: ['#335EEA', '#306EFF', '#1589FF', '#5CB3FF', '#82CAFF', '#C6DEFF']
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+      chart.draw(data, options);
+    }
+  </script>
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Month', 'Spent'],
+        ['Jan',  12500],
+        ['Feb',  11250],
+        ['Mar',  10050],
+        ['Apr',  10150],
+        ['May', 9400],
+        ['Jun', 7500],
+        ['Jul', 8900],
+        ['Aug', 13450],
+        ['Sep', 12450],
+        ['Oct', 11700]
+      ]);
+
+      var options = {
+        title: 'Over time spendings',
+        curveType: 'line',
+        legend: { position: 'bottom' },
+        colors: ['#335eea']
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+      chart.draw(data, options);
+    }
+  </script>
+{% endblock %}
+
+<!-- Title -->
+{% block title %}
+  Visuals
+{% endblock %}
+
+<!-- Graphs -->
+{% block main %}
+  <div id="donutchart" style="width: 900px; height: 500px; margin: auto;"></div>
+  <div id="curve_chart" style="width: 900px; height: 500px; margin: auto;"></div>
+{% endblock %}
