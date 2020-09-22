@@ -16,12 +16,15 @@ app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Ensure responses aren't cached
+
+
 @app.after_request
 def after_request(response):
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     response.headers["Expires"] = 0
     response.headers["Pragma"] = "no-cache"
     return response
+
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
@@ -47,10 +50,10 @@ def index():
 
     # Method is POST
     if request.method == 'POST':
-        
+
         # Get month
         month = request.form.get('month')
-        
+
         # Ensure a month was submitted
         if not month:
             return apology('Missing a month?', 400)
@@ -71,8 +74,8 @@ def index():
             ON b.id = t.bridge_id
             AND b.user_id = :id 
             AND strftime('%m', t.occurred_at) = :month
-            """, id=user_id, month=month)[0]['sum']
-        
+        """, id=user_id, month=month)[0]['sum']
+
         # Get remaining cash
         if not spent:
             remain, spent = cash, 0
@@ -95,8 +98,8 @@ def index():
             ORDER BY t.occurred_at DESC, c.name DESC;
         """, id=user_id, month=month)
 
-        return render_template('index.html', 
-            spent=spent, remain=remain, rows=rows, month=month_name)
+        return render_template('index.html',
+                               spent=spent, remain=remain, rows=rows, month=month_name)
 
     # Method is GET
     else:
@@ -110,8 +113,8 @@ def index():
             AND b.user_id = :id 
             AND strftime('%m', t.occurred_at) 
             = strftime('%m', date('now'));
-            """, id=user_id)[0]['sum']
-        
+        """, id=user_id)[0]['sum']
+
         # Get remaining cash
         if not spent:
             remain, spent = cash, 0
@@ -136,10 +139,8 @@ def index():
         """, id=user_id)
 
         return render_template('index.html',
-            spent=spent, remain=remain, rows=rows)
-        
+                               spent=spent, remain=remain, rows=rows)
 
-    
 
 @app.route('/logout')
 @login_required
@@ -175,7 +176,7 @@ def login():
         rows = db.execute("""
             SELECT * FROM users 
             WHERE username = :username;
-            """, username=request.form.get('username'))
+        """, username=request.form.get('username'))
 
         # Ensure username exists and password is correct
         password = request.form.get('password')
@@ -187,7 +188,7 @@ def login():
 
         # Redirect user to home page
         return redirect('/')
-    
+
     # Method is GET
     else:
         return render_template("login.html")
@@ -222,7 +223,7 @@ def register():
             SELECT COUNT(*) AS count 
             FROM users 
             WHERE username = :username;
-            """, username=username)
+        """, username=username)
 
         # Username taken
         if row[0]["count"] > 0:
@@ -236,18 +237,18 @@ def register():
             db.execute("""
                 INSERT INTO users (username, hash)
                 VALUES (:username, :hash);
-                """, username=username, hash=password_hash)
+            """, username=username, hash=password_hash)
         else:
             db.execute("""
                 INSERT INTO users (username, hash, cash)
                 VALUES (:username, :hash, :cash);
-                """, username=username, hash=password_hash, cash=cash)
+            """, username=username, hash=password_hash, cash=cash)
 
         # Get user id
         user_id = db.execute("""
             SELECT id FROM users 
             WHERE username = :username;
-            """, username=username)
+        """, username=username)
 
         # Remember which user has logged in
         session["user_id"] = user_id[0]["id"]
@@ -262,12 +263,13 @@ def register():
     else:
         return render_template("register.html")
 
+
 @app.route('/add', methods=['GET', 'POST'])
 @login_required
 def add():
     """Add a transaction"""
 
-    # Get user id 
+    # Get user id
     user_id = session['user_id']
 
     # Method is POST
@@ -278,11 +280,11 @@ def add():
         new_category = request.form.get('new-category').lower().strip()
         description = request.form.get('description')
         price = request.form.get('price')
-        
+
         # Ensure a category is chosen
         if not category and not new_category:
             return apology('Missing category?', 400)
-        
+
         # Ensure only one category is choosen
         if category and new_category:
             return apology('Multiple categories choosen?', 400)
@@ -314,10 +316,10 @@ def add():
                 (bridge_id, description, price, occurred_at)
                 VALUES (:id, :des, :price, date('now'));
             """, id=bridge_id, des=description, price=price)
-        
+
         # New category is added
         else:
-            
+
             # Check if new category exists
             rows = db.execute("""
                 SELECT id FROM categories
@@ -348,8 +350,8 @@ def add():
                     INSERT INTO transactions
                     (bridge_id, description, price, occurred_at)
                     VALUES (:id, :des, :price, date('now'));
-                """, id=bridge_id ,des=description, price=price)
-            
+                """, id=bridge_id, des=description, price=price)
+
             # Category doesn't exist
             else:
 
@@ -383,11 +385,11 @@ def add():
                     INSERT INTO transactions
                     (bridge_id, description, price, occurred_at)
                     VALUES (:id, :des, :price, date('now'));
-                """, id=bridge_id ,des=description, price=price)
+                """, id=bridge_id, des=description, price=price)
 
         # Redirect user to homepage
             return redirect(url_for('index'))
-    
+
     # Method is GET
     else:
 
