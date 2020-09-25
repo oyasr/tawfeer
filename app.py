@@ -388,7 +388,7 @@ def add():
                 """, id=bridge_id, des=description, price=price)
 
         # Redirect user to homepage
-            return redirect(url_for('index'))
+        return redirect(url_for('index'))
 
     # Method is GET
     else:
