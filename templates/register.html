@@ -1,37 +1,47 @@
 {% extends "layout.html" %}
 
 <!-- Title -->
-{% block title %}
-    Register
-{% endblock %}
+{% block title %} Register {% endblock %}
 
 <!-- Login Form -->
 {% block main %}
-    <div id="primary-form">
-        <div class="container">
-            <h1>Register</h1>
-            <p>Track expenses in minutes.</p>
-            <form action="/register" method="POST">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input autocomplete="off" name="username" id="username" type="text">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input  name="password" id="password" type="password">
-                </div>
-                <div class="form-group">
-                    <label for="password-again">Password (again)</label>
-                    <input  name="password-again" id="password-again" type="password">
-                </div>
-                <div class="form-group">
-                    <label for="cash">Monthly Budget</label>
-                    <input  name="cash" id="cash" type="number" min="1" placeholder="Default: 10k">
-                </div>
-                <button class="btn btn-primary" type="submit">Register</button>
-                <p>Already have an account? <a class="text-primary" href="/login">Login.</a></p>
-            </form>
-            <div class="form-img"><img src={{ url_for('static', filename='landing.png') }} alt="Three people chatting illustration"></div>
-        </div>
+<div id="primary-form">
+  <div class="container">
+    <h1>Register</h1>
+    <p>Track expenses in minutes.</p>
+    <form action="/register" method="POST">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input autocomplete="off" name="username" id="username" type="text" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input name="password" id="password" type="password" />
+      </div>
+      <div class="form-group">
+        <label for="password-again">Password (again)</label>
+        <input name="password-again" id="password-again" type="password" />
+      </div>
+      <div class="form-group">
+        <label for="cash">Monthly Budget</label>
+        <input
+          name="cash"
+          id="cash"
+          type="number"
+          min="1"
+          placeholder="Default: 10k"
+        />
+      </div>
+      <button class="btn btn-primary" type="submit">Register</button>
+      <p>
+        Already have an account?
+        <a class="text-primary" href="/login">Login.</a>
+      </p>
+    </form>
+    <div class="form-img">
+      <img src={{ url_for('static', filename='landing.png') }} alt="Three people
+      chatting illustration">
     </div>
+  </div>
+</div>
 {% endblock %}
