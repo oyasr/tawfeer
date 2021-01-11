@@ -59,7 +59,7 @@ def index():
             return apology('Missing a month?', 400)
 
         # Get month name
-        month_name = datetime(2020, int(month), 1).strftime('%B')
+        month_name = datetime(2021, int(month), 1).strftime('%B')
         month_name.capitalize()
 
         # Fromat month
