@@ -1,327 +1,338 @@
+/* Import Google font */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap");
+
 /* Reset */
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 /* Main Styling */
-html, body {
-    font-family: 'Noto Sans HK', sans-serif;
-    line-height: 1.4em;
-}
-
-h1, h2, h3 {
-    margin-bottom: 40px;
+body {
+  font-family: "Noto Sans HK", sans-serif;
+  line-height: 2.5rem;
 }
 
 a {
-    color: #506690;
-    text-decoration: none;
+  color: #506690;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
 }
 
 /* Utility Classes */
 .container {
-    max-width: 1000px;
-    margin: auto;
-    overflow: auto;
-    padding: 0px 20px; 
+  max-width: 67.5rem;
+  margin: auto;
+  padding: 0 1rem;
+  overflow: hidden;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .text-primary {
-    color: #335eea;
-    
+  color: #335eea;
 }
 
 .btn {
-    display: inline-block;
-    font-size: 18px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-family: 'Noto Sans HK', sans-serif;
-}
-
-.btn:hover {
-    background-color: #2753e2;
-    color: #fff;
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "Noto Sans HK", sans-serif;
 }
 
 .btn-primary {
-    background-color: #335eea;
-    color: #fff;
+  background-color: #335eea;
+  color: #fff;
 }
 
 .btn-light {
-    background: #b6cbe6;
-    color: #335eea;
+  background: #b6cbe6;
+  color: #335eea;
 }
 
-.clr {
-    clear: both;
+.btn:hover {
+  background-color: #2753e2;
+  color: #fff;
+}
+
+.l-heading {
+  font-size: 4rem;
+  margin-bottom: 0.75rem;
+  /* line-height: 1.1; */
+}
+
+.m-heading {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.lead {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.py-1 {
+  padding: 1.5rem 0;
+}
+
+.py-2 {
+  padding: 2rem 0;
+}
+
+.py-3 {
+  padding: 3rem 0;
+}
+
+.p-1 {
+  padding: 1.5rem 1.5rem;
+}
+
+.p-2 {
+  padding: 2rem 2rem;
+}
+
+.p-3 {
+  padding: 3rem 3rem;
+}
+
+#alert {
+  background: #b6cbe6;
 }
 
 /* Navbar */
 #navbar {
-    color: #506690;
-    overflow: auto;
+  color: #506690;
+  padding: 1.6rem 0;
 }
 
-#navbar h2 {
-    float: left;
-    font-weight: bolder;
-    font-size: 25px;
-    margin-top: 40px;
-}
-
-#navbar #logout {
-    margin-top: 30px;
-    float: right;
+#navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #navbar ul {
-    list-style: none;
-    float: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #navbar ul li {
-    float: left;
-}
-
-#navbar ul li a {
-    display: block;
-    padding: 40px;
-    text-align: center;
+  margin: 0 2rem;
+  text-align: center;
 }
 
 #navbar ul li a:hover {
-    color:  #335eea;
+  color: #335eea;
 }
 
-/* Form */
-#primary-form {
-    padding-top: 100px;
-    font-size: 18px;
+/* Home Page */
+#home .container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 6rem;
+  /* align-items: center; */
 }
 
-#primary-form h1 {
-    font-weight: lighter;
-    line-height: 1.5em;
-    margin: 0;
+#home .left-div {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
 }
 
-#primary-form p {
-    color: #506690;
-    margin: 0;
+#home .left-div .cash {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
 }
 
-#primary-form form {
-    width: 50%;
-    float: left;
-    min-height: 100%;
-    padding: 20px 0px;
-    overflow: hidden;
+#home .left-div .cash .spent {
+  width: 50%;
+  border-right: 1px solid #b6cbe6;
 }
 
-#primary-form .form-img {
-    width: 50%;
-    float: right;
-    min-height: 100%;
+#home .left-div .add-btn a {
+  width: 100%;
 }
 
-#primary-form .form-img img {
-    display: block;
-    margin: auto;
-    width: 100%;
+#home .right-div {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
 }
 
-#primary-form label {
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 10px;
+#home .right-div form {
+  display: flex;
+  justify-content: space-between;
 }
 
-#primary-form input, #primary-form select {
-    width: 50%;
-    padding: 10px;
-    border: 1px solid #b6cbe6;
-    font-size: 16px;
-    border-radius: 5px;
+#home .right-div form input {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #b6cbe6;
+  border-radius: 5px;
+  flex: 0.95;
+  font-family: "Noto Sans HK", sans-serif;
 }
 
-#primary-form button {
-    margin: 20px 0px;
-    width: 50%;
-    font-family: 'Noto Sans HK', sans-serif;
-}
-
-#primary-form form p {
-    font-size: 14px;
-}
-
-#primary-form input:focus, #primary-form select:focus {
-    outline: none;
-    border-color: #335eea;
-}
-
-/* Apology */
-#apology {
-    padding-top: 100px;
-    font-size: 18px;
-}
-
-#apology .apology-message {
-    width: 50%;
-    float: left;
-    text-align: center;
-    min-height: 100%;
-    padding: 20px 0px;
-    overflow: hidden;
-    padding-top: 150px;
-}
-
-#apology .apology-message h1 {
-    font-size: 70px;
-    font-weight: lighter;
-}
-
-#apology .apology-message p {
-    font-size: 20px;
-    color: #506690;
-}
-
-#apology .apology-img {
-    width: 50%;
-    float: right;
-    min-height: 100%;
-}
-
-#apology .apology-img img {
-    display: block;
-    margin: auto;
-    width: 100%;
+#home .right-div form input:focus {
+  outline: none;
+  border-color: #335eea;
 }
 
 /* Table */
 .content-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    min-width: 400px;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .content-table thead tr {
-    background-color: #335eea;
-    color: #fff;
-    text-align: left;
-    font-weight: bold;
-  }
-  
-  .content-table th,
-  .content-table td {
-    padding: 12px 15px;
-  }
-  
-  .content-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-  }
-  
-  .content-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-  }
-  
-  .content-table tbody tr:last-of-type {
-    border-bottom: 2px solid #335eea;
-  }
-
-
-/* Home page */
-#home {
-    padding-top: 100px;
-    font-size: 18px;
+  border-collapse: collapse;
+  /* margin: 25px 0; */
+  font-size: 0.9em;
+  min-width: 300px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-#home .numbers {
-    width: 30%;
-    float: left;
-    margin-top: 40px;
-    min-height: 100%;
+.content-table thead tr {
+  background-color: #335eea;
+  color: #fff;
+  text-align: left;
+  font-weight: bold;
 }
 
-#home .table {
-    width: 70%;
-    float: right;
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
 }
 
-#home .table table {
-    float: right;
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
 }
 
-#home .numbers .spent {
-    width: 50%;
-    float: left;
-    border-right: 1px solid #b6cbe6;
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
 }
 
-#home .numbers .remaining {
-    width: 50%;
-    float: right;
-    text-align: right;
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #335eea;
 }
 
-#home .numbers h1 {
-    font-weight: lighter;
+/* Form */
+#primary-form {
+  padding-top: 100px;
+  font-size: 18px;
 }
 
-#home .numbers p {
-    color: #506690;
+#primary-form h1 {
+  font-weight: lighter;
+  line-height: 1.5em;
+  margin: 0;
 }
 
-#home .numbers a {
-    margin-top: 35px;
-    min-width: 100%;
-    text-align: center;
+#primary-form p {
+  color: #506690;
+  margin: 0;
 }
 
-#home .month-div form {
-    width: 50%;
-    float: right;
+#primary-form form {
+  width: 50%;
+  float: left;
+  min-height: 100%;
+  padding: 20px 0px;
+  overflow: hidden;
 }
 
-#home .month-div form .form-group {
-    width: 100%;
-    margin: auto;
+#primary-form .form-img {
+  width: 50%;
+  float: right;
+  min-height: 100%;
 }
 
-#home .month-div h1 {
-    width: 50%;
-    float: left;
-    font-weight: lighter;
-    line-height: 1.4em;
+#primary-form .form-img img {
+  display: block;
+  margin: auto;
+  width: 100%;
 }
 
-#home .month-div form input {
-    width: 70%;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: 1px solid #b6cbe6;
-    border-radius: 5px;
-    margin-top: 10px;
-    font-family: 'Noto Sans HK', sans-serif;
-
+#primary-form label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
-#home .month-div form input:focus {
-    outline: none;
-    border-color: #335eea;
+#primary-form input,
+#primary-form select {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #b6cbe6;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#primary-form button {
+  margin: 20px 0px;
+  width: 50%;
+  font-family: "Noto Sans HK", sans-serif;
+}
+
+#primary-form form p {
+  font-size: 14px;
+}
+
+#primary-form input:focus,
+#primary-form select:focus {
+  outline: none;
+  border-color: #335eea;
+}
+
+/* Apology */
+#apology {
+  padding-top: 100px;
+  font-size: 18px;
+}
+
+#apology .apology-message {
+  width: 50%;
+  float: left;
+  text-align: center;
+  min-height: 100%;
+  padding: 20px 0px;
+  overflow: hidden;
+  padding-top: 150px;
+}
+
+#apology .apology-message h1 {
+  font-size: 70px;
+  font-weight: lighter;
+}
+
+#apology .apology-message p {
+  font-size: 20px;
+  color: #506690;
+}
+
+#apology .apology-img {
+  width: 50%;
+  float: right;
+  min-height: 100%;
+}
+
+#apology .apology-img img {
+  display: block;
+  margin: auto;
+  width: 100%;
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    margin-top: 100px;
+  text-align: center;
+  margin-top: 100px;
 }

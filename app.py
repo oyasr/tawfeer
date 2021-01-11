@@ -59,7 +59,7 @@ def index():
             return apology('Missing a month?', 400)
 
         # Get month name
-        month_name = datetime(2020, int(month), 1).strftime('%B')
+        month_name = datetime(2021, int(month), 1).strftime('%B')
         month_name.capitalize()
 
         # Fromat month
@@ -254,7 +254,7 @@ def register():
         session["user_id"] = user_id[0]["id"]
 
         # Flash message
-        #flash("Registered successfully!")
+        flash("Registered successfully!")
 
         # Redirect user to home page
         return redirect("/")
