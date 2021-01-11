@@ -254,7 +254,7 @@ def register():
         session["user_id"] = user_id[0]["id"]
 
         # Flash message
-        #flash("Registered successfully!")
+        flash("Registered successfully!")
 
         # Redirect user to home page
         return redirect("/")

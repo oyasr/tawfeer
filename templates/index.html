@@ -52,7 +52,7 @@
         <table id="table" class="content-table">
           <thead>
             <tr>
-              <th>Category</th>
+              <th class="category">Category</th>
               <th>Description</th>
               <th>Price</th>
               <th>Date</th>
@@ -61,7 +61,7 @@
           <tbody id="tbody">
             {% for row in rows %}
             <tr>
-              <td>{{ row["category"] }}</td>
+              <td class="category">{{ row["category"] }}</td>
               <td>{{ row["description"] }}</td>
               <td>${{ row["price"] }}</td>
               <td>{{ row["date"] }}</td>

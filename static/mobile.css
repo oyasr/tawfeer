@@ -1,0 +1,41 @@
+/* Home page */
+#home .container {
+  flex-direction: column;
+  align-items: center;
+}
+
+#home .container .left-div {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #b6cbe6;
+  margin: 0 2rem;
+}
+
+#home .container .right-div {
+  padding-top: 6rem;
+}
+
+@media (max-width: 550px) {
+  #navbar .container {
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #b6cbe6;
+    padding-bottom: 2rem;
+    margin: 0 2rem;
+  }
+
+  #navbar .logo,
+  #navbar ul {
+    margin-bottom: 1rem;
+  }
+
+  #navbar .btn {
+    width: 16rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 450px) {
+  #home .right-div .table .category {
+    display: none;
+  }
+}

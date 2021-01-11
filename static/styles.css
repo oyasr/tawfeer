@@ -104,6 +104,10 @@ ul {
   padding: 3rem 3rem;
 }
 
+#alert {
+  background: #b6cbe6;
+}
+
 /* Navbar */
 #navbar {
   color: #506690;
@@ -135,6 +139,7 @@ ul {
 #home .container {
   display: flex;
   justify-content: space-between;
+  padding-top: 6rem;
   /* align-items: center; */
 }
 
@@ -188,9 +193,9 @@ ul {
 /* Table */
 .content-table {
   border-collapse: collapse;
-  margin: 25px 0;
+  /* margin: 25px 0; */
   font-size: 0.9em;
-  min-width: 400px;
+  min-width: 300px;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
