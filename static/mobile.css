@@ -1,17 +1,57 @@
-/* Home page */
-#home .container {
+@media (max-width: 768px) {
+  /* Home Page */
+  #home .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #home .container .left-div {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #b6cbe6;
+    margin: 0 2rem;
+    text-align: center;
+  }
+
+  #home .container .right-div {
+    padding-top: 6rem;
+  }
+}
+
+/* Login Page */
+#login .login-img {
+  display: none;
+}
+
+#login .login-form {
+  margin: auto;
+  text-align: center;
+}
+
+/* Register Page */
+#register .register-img {
+  display: none;
+}
+
+#register .register-form {
+  margin: auto;
+  text-align: center;
+}
+
+/* Add Page */
+#add .add-img {
+  display: none;
+}
+
+#add .add-form {
+  margin: auto;
+  text-align: center;
+}
+
+/* Apology Page */
+#apology .container {
   flex-direction: column;
   align-items: center;
-}
-
-#home .container .left-div {
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #b6cbe6;
-  margin: 0 2rem;
-}
-
-#home .container .right-div {
-  padding-top: 6rem;
+  text-align: center;
 }
 
 @media (max-width: 550px) {
