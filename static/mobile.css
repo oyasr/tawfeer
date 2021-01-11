@@ -1,4 +1,4 @@
-@media (max-width: 750px) {
+@media (max-width: 768px) {
   /* Home Page */
   #home .container {
     flex-direction: column;
@@ -23,6 +23,16 @@
 }
 
 #login .login-form {
+  margin: auto;
+  text-align: center;
+}
+
+/* Register Page */
+#register .register-img {
+  display: none;
+}
+
+#register .register-form {
   margin: auto;
   text-align: center;
 }

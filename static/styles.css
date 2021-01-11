@@ -230,7 +230,7 @@ ul {
   display: flex;
   justify-content: space-between;
   padding-top: 6rem;
-  /* align-items: center; */
+  align-items: center;
 }
 
 #login .login-img img {
@@ -258,6 +258,43 @@ ul {
 }
 
 #login .login-form form input:focus {
+  outline: none;
+  border-color: #335eea;
+}
+
+/* Register Page */
+#register .container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 6rem;
+  align-items: center;
+}
+
+#register .register-img img {
+  width: 30rem;
+}
+
+#register .register-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+#register .register-form form input {
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #b6cbe6;
+  border-radius: 5px;
+  flex: 0.95;
+  font-family: "Noto Sans HK", sans-serif;
+}
+
+#register .register-form form button {
+  margin-top: 1.5rem;
+  margin-bottom: 00.5rem;
+}
+
+#register .register-form form input:focus {
   outline: none;
   border-color: #335eea;
 }
