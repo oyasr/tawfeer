@@ -37,6 +37,16 @@
   text-align: center;
 }
 
+/* Add Page */
+#add .add-img {
+  display: none;
+}
+
+#add .add-form {
+  margin: auto;
+  text-align: center;
+}
+
 @media (max-width: 550px) {
   #navbar .container {
     flex-direction: column;

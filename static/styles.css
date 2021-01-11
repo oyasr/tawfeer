@@ -298,6 +298,45 @@ ul {
   outline: none;
   border-color: #335eea;
 }
+
+/* Add Page */
+#add .container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 6rem;
+  align-items: center;
+}
+
+#add .add-img img {
+  width: 30rem;
+}
+
+#add .add-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+#add .add-form form input,
+#add .add-form form select {
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #b6cbe6;
+  border-radius: 5px;
+  flex: 0.95;
+  font-family: "Noto Sans HK", sans-serif;
+}
+
+#add .add-form form button {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#add .add-form input:focus,
+#add .add-form select:focus {
+  outline: none;
+  border-color: #335eea;
+}
 /* #primary-form {
   padding-top: 100px;
   font-size: 18px;

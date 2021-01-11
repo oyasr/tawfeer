@@ -3,13 +3,13 @@
 <!-- Title -->
 {% block title %} Add {% endblock %}
 
-<!-- Add form -->
+<!-- Add Page -->
 {% block main %}
-<div class="container">
-  <div id="primary-form">
-    <h1>Add Transaction</h1>
-    <form action="/add" method="POST">
-      <div class="form-group">
+<section id="add">
+  <div class="container py-3">
+    <div class="add-form p-1">
+      <h1 class="m-heading py-1">Add Transaction</h1>
+      <form action="/add" method="POST">
         <label for="category">Choose Category</label>
         <select class="form-control" name="category" id="category">
           <option disabled selected value="">Category</option>
@@ -17,9 +17,7 @@
           <option value="{{ row['category'] }}">{{ row["category"] }}</option>
           {% endfor %}
         </select>
-      </div>
-      <p style="font-size: 16px; padding-top: 15px">OR</p>
-      <div class="form-group">
+        <p style="font-size: 16px; padding-top: 15px">OR</p>
         <label for="new-category">New Category</label>
         <input
           autocomplete="off"
@@ -27,8 +25,6 @@
           name="new-category"
           id="new-category"
         />
-      </div>
-      <div class="form-group">
         <label for="description">Description</label>
         <input
           autocomplete="off"
@@ -36,17 +32,15 @@
           name="description"
           id="description"
         />
-      </div>
-      <div class="form-group">
         <label for="price">Price</label>
         <input type="number" min="1" name="price" id="price" />
-      </div>
-      <button class="btn btn-primary" type="submit">Add</button>
-    </form>
-    <div class="form-img">
+        <button class="btn btn-primary" type="submit">Add</button>
+      </form>
+    </div>
+    <div class="add-img p-1">
       <img src={{ url_for('static', filename='add.png') }} alt="Large phone
       illustration">
     </div>
   </div>
-</div>
+</section>
 {% endblock %}
