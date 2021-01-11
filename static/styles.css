@@ -337,109 +337,17 @@ ul {
   outline: none;
   border-color: #335eea;
 }
-/* #primary-form {
-  padding-top: 100px;
-  font-size: 18px;
-}
 
-#primary-form h1 {
-  font-weight: lighter;
-  line-height: 1.5em;
-  margin: 0;
-}
-
-#primary-form p {
-  color: #506690;
-  margin: 0;
-}
-
-#primary-form form {
-  width: 50%;
-  float: left;
-  min-height: 100%;
-  padding: 20px 0px;
-  overflow: hidden;
-}
-
-#primary-form .form-img {
-  width: 50%;
-  float: right;
-  min-height: 100%;
-}
-
-#primary-form .form-img img {
-  display: block;
-  margin: auto;
-  width: 100%;
-}
-
-#primary-form label {
-  display: block;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-#primary-form input,
-#primary-form select {
-  width: 50%;
-  padding: 10px;
-  border: 1px solid #b6cbe6;
-  font-size: 16px;
-  border-radius: 5px;
-}
-
-#primary-form button {
-  margin: 20px 0px;
-  width: 50%;
-  font-family: "Noto Sans HK", sans-serif;
-}
-
-#primary-form form p {
-  font-size: 14px;
-}
-
-#primary-form input:focus,
-#primary-form select:focus {
-  outline: none;
-  border-color: #335eea;
-} */
-
-/* Apology */
-#apology {
-  padding-top: 100px;
-  font-size: 18px;
-}
-
-#apology .apology-message {
-  width: 50%;
-  float: left;
-  text-align: center;
-  min-height: 100%;
-  padding: 20px 0px;
-  overflow: hidden;
-  padding-top: 150px;
-}
-
-#apology .apology-message h1 {
-  font-size: 70px;
-  font-weight: lighter;
-}
-
-#apology .apology-message p {
-  font-size: 20px;
-  color: #506690;
-}
-
-#apology .apology-img {
-  width: 50%;
-  float: right;
-  min-height: 100%;
+/* Apology Page */
+#apology .container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 6rem;
+  align-items: center;
 }
 
 #apology .apology-img img {
-  display: block;
-  margin: auto;
-  width: 100%;
+  width: 30rem;
 }
 
 /* Footer */
