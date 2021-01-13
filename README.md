@@ -57,14 +57,12 @@ There are also a few new files:
 * *tawfeer.db* which is the sqlite database file
 
 ## Acknowledgements & Final words
-As a part of Harvard's CS50x, this project serves as the final project!
-From here I would like to thank the awesome team of [**CS50x**](https://cs50.harvard.edu/x/2020/) at Harvard who work so hard to create world class CS courses.
-
-Big thanks to my family for supporting me througout my whole life. Thanks for everyone who makes this world a better place. 
-
 This is the first version of Tawfeer. Of course there will be imperfections, flaws that might need some more work. I plan on continuing the development proccess
 of this project, adding more new features and making it ready for production. So if you are interested in contributing to this project don't hesitate to send a 
 pull request or even open up a new issue and I will respond ASAP.
 
 ## Authors
-Yours truly, Osama.
+Ahmed Yasser Fathi<br>
+Moaz Mohammed Samy<br>
+Osama Mohammed Ragab<br> 
+Osama Yasser Saber
