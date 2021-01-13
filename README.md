@@ -57,9 +57,9 @@ There are also a few new files:
 * *tawfeer.db* which is the sqlite database file
 
 ## Acknowledgements & Final words
-This is the first version of Tawfeer. Of course there will be imperfections, flaws that might need some more work. I plan on continuing the development proccess
+This is the first version of Tawfeer. Of course there will be imperfections, flaws that might need some more work. We plan on continuing the development proccess
 of this project, adding more new features and making it ready for production. So if you are interested in contributing to this project don't hesitate to send a 
-pull request or even open up a new issue and I will respond ASAP.
+pull request or even open up a new issue and we will respond ASAP.
 
 ## Authors
 Ahmed Yasser Fathi<br>
