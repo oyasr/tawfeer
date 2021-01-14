@@ -56,6 +56,9 @@ There are also a few new files:
 * *requirements.txt* lists the package dependencies to regenerate identical virtual environments.
 * *tawfeer.db* which is the sqlite database file
 
+## ERD
+![ERD](https://github.com/osamayasserr/tawfeer/blob/master/images/Untitled%20Diagram.png)
+
 ## Acknowledgements & Final words
 This is the first version of Tawfeer. Of course there will be imperfections, flaws that might need some more work. We plan on continuing the development proccess
 of this project, adding more new features and making it ready for production. So if you are interested in contributing to this project don't hesitate to send a 
